@@ -1,0 +1,58 @@
+//======================================================================
+// Constraint file CHUAN 3.3V cho Tang Primer 20K Dock Lite
+// Chi dung Bank 2 va Bank 7 (Vcc = 3.3V) - Khong dung Bank 1.5V
+//======================================================================
+
+// Clock 27 MHz (Thach anh tren Core Board)
+IO_LOC "clk_27m" H11;
+IO_PORT "clk_27m" IO_TYPE=LVCMOS33;
+
+// ------------------------------------------------------------------
+// 1. ADXL345 SPI (Cam vao Header GPIO 3.3V)
+// ------------------------------------------------------------------
+IO_LOC "adxl_sclk"  T15;
+IO_PORT "adxl_sclk"  IO_TYPE=LVCMOS33 DRIVE=8;
+
+IO_LOC "adxl_mosi"  T12;
+IO_PORT "adxl_mosi"  IO_TYPE=LVCMOS33 DRIVE=8;
+
+IO_LOC "adxl_miso"  R12;
+IO_PORT "adxl_miso"  IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+IO_LOC "adxl_cs_n"  P13;
+IO_PORT "adxl_cs_n"  IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8;
+
+IO_LOC "adxl_int1"  T11;
+IO_PORT "adxl_int1"  IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+
+// ------------------------------------------------------------------
+// 2. SPI gui ra MCU Sonix (Cam vao Header GPIO 3.3V)
+// ------------------------------------------------------------------
+IO_LOC "spi_sck"       P11;
+IO_PORT "spi_sck"       IO_TYPE=LVCMOS33 DRIVE=8;
+
+IO_LOC "spi_cs_n"      R13;
+IO_PORT "spi_cs_n"      IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8;
+
+IO_LOC "spi_mosi"      T14;
+IO_PORT "spi_mosi"      IO_TYPE=LVCMOS33 DRIVE=8;
+
+IO_LOC "mcu_irq_pulse" R11;
+IO_PORT "mcu_irq_pulse" IO_TYPE=LVCMOS33 DRIVE=8;
+
+// ------------------------------------------------------------------
+// 3. LED Debug (Xuat ra chan GPIO de do hoac cam LED ngoai)
+// ------------------------------------------------------------------
+IO_LOC "led_alive"      N11;
+IO_PORT "led_alive"      IO_TYPE=LVCMOS33 DRIVE=8;
+
+IO_LOC "led_infer_busy" L13;
+IO_PORT "led_infer_busy" IO_TYPE=LVCMOS33 DRIVE=8;
+
+IO_LOC "led_ood_alert"  K11;
+IO_PORT "led_ood_alert"  IO_TYPE=LVCMOS33 DRIVE=8;
+// ------------------------------------------------------------------
+// 4. UART Direct Spectrum Streamer (Xuat pho truc tiep len PC qua USB-UART)
+// ------------------------------------------------------------------
+   IO_LOC "uart_txd" M11;
+   IO_PORT "uart_txd" IO_TYPE=LVCMOS33 PULL_MODE=UP;
